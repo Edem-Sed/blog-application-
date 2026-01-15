@@ -5,7 +5,8 @@ import { blogRouter } from './routes/blog_routes.js'
 
 const app = express ()
 
-const PORT = 7788
+const PORT = process.env.PORT || 7788;
+
 
 
 
