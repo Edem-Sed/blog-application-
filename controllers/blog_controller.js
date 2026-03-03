@@ -25,8 +25,13 @@ export const createBlog = async (req, res) => {
       imageUrl = result.secure_url;
     }
 
+    const { title, content, category, tags } = req.body;
+
     const blog = await Blog.create({
-      ...req.body,
+      title,
+      content,
+      category,
+      tags,
       image: imageUrl,
       author: req.user.id
     });
@@ -75,6 +80,7 @@ export const getBlogById = async (req, res) => {
 
     res.status(200).json(blog);
   } catch (error) {
+    console.log(error);
     res.status(400).json({
       message: "Invalid blog ID"
     });

@@ -1,3 +1,5 @@
+import { User } from "../models/user_models.js";
+
 export const deleteUser = async (req, res) => {
   try {
     const user = await User.findByIdAndDelete(req.params.id);
@@ -13,6 +15,7 @@ export const deleteUser = async (req, res) => {
     });
 
   } catch (error) {
+    console.log(error)
     res.status(400).json({
       message: "Invalid user ID"
     });
